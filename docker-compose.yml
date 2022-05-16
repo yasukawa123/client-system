@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  web:
+    build: 
+      context: .
+      dockerfile: ./php/Dockerfile
+    container_name: client_system
+    volumes:
+      - ./src:/var/www/html
+      - ./apache/sites-available:/etc/apache2/sites-available
+    ports:
+      - 8080:80
+    env_file: env/.env.mysql
+
+  db:
+    platform: linux/x86_64
+    image: mysql:8.0.26
+    container_name: client_system_db_1
+    environment:
+      MYSQL_HOST: db
+      MYSQL_DATABASE: client_system_db
+      MYSQL_USER: admin51
+      MYSQL_PASSWORD: password51
+      MYSQL_ROOT_PASSWORD: password51
+    volumes:
+      - db-data:/var/lib/mysql
+
+volumes:
+  db-data:
