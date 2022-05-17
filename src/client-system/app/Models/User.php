@@ -14,6 +14,7 @@ class User extends Authenticatable
 
     const ROLE_SUPER_VISOR = 1; // スーパーバイザー
     const ROLE_EMPLOYEE = 2; // 社員
+    const ROLE_PT_JOB = 3; // アルバイト
 
     /**
      * The attributes that are mass assignable.
@@ -44,4 +45,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
+    }
+
+    public function shop()
+    {
+        return $this->belongsTo(Shop::class);
+    }
+
+    public function customers()
+    {
+        return $this->hasMany(CustomerLog::class);
+    }
 }
