@@ -30,3 +30,8 @@ Route::get('/', [\App\Http\Controllers\TopPageController::class, 'top_page'])->n
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// 社員一覧呼び出し
+Route::get('/users', \App\Http\Controllers\UserController::class)->name('社員一覧')->middleware('auth');
+// 役職一覧呼び出し
+Route::get('/roles', \App\Http\Controllers\RoleController::class)->name('役職一覧')->middleware('auth');
