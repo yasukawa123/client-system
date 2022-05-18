@@ -12,13 +12,18 @@ class KramerInComming extends Mailable
     use Queueable, SerializesModels;
 
     /**
+     * @var \App\Models\Customer
+     */
+    public $kramer;
+
+    /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(\App\Models\Customer $kramer)
     {
-        //
+        $this->kramer = $kramer;
     }
 
     /**

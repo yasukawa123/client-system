@@ -1,10 +1,12 @@
 @component('mail::message')
 # Introduction
 
-The body of your message.
+クレーマーが来ました。
+{{ $kramer->name }}様
 
 @component('mail::button', ['url' => ''])
 Button Text
+顧客管理システムを開く
 @endcomponent
 
 Thanks,<br>

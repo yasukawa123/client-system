@@ -7,9 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
-    use HasFactory;
+    const KRAMER_FLAG_ON = 1;
 
+    use HasFactory;
     protected $guarded = [];
+
+    protected $dispatchesEvents = [
+        'created' => \App\Events\KramerInComming::class,
+    ];
 
     public function shop()
     {
@@ -19,5 +24,11 @@ class Customer extends Model
     public function customerLogs()
     {
         return $this->hasMany(CustomerLog::class);
+    }
+
+    // メールクレーマー設定
+    public function isKramer(): bool
+    {
+        return $this->kramer_flag == Customer::KRAMER_FLAG_ON;
     }
 }
