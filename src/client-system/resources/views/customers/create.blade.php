@@ -7,7 +7,8 @@
                     <div class="card-header">顧客新規登録</div>
                     <form action="/customers" method="POST">
                         @csrf
-                        <p>氏名：<input type="text" name="name" value="{{ old('name') }}"></p>
+                        <p>氏名：<input type="text" name="name
+                        " value="{{ old('name') }}"></p>
                         <p>店舗番号：<input type="text" name="shop_id" value="{{ old('shop') }}"></p>
                         <p style="font-size: 0.75em">1 東京本店, 2 名古屋支店, 3 大阪支店</p>
                         <p>郵便番号：<input type="text" name="postal" value="{{ old('postal') }}"></p>
